@@ -1,0 +1,157 @@
+# VOLT MOTORS - Luxury Automotive Dealership & Shopping Experience
+
+Build a **world-class, modern automotive website** for **VOLT MOTORS** adhering strictly to the user's aesthetic guidelines:
+- **Palette**: Black (`#050505`), Dark Charcoal (`#0D0D0D`), Electric Cyan (`#00E5FF`), White (`#FFFFFF`), Gray (`#9A9A9A`).
+- **Design Language**: Minimal cards, large vehicle photography, thin borders, generous negative space, sleek typography (`Outfit` / `Plus Jakarta Sans` / `Space Grotesk`), subtle micro-animations (300-400ms), and zero excessive gimmicks.
+
+---
+
+## Architecture & Technical Stack
+
+- **Core**: Semantic HTML5, Modular Vanilla JavaScript (ES6+), Vanilla CSS3 with clean CSS custom properties / Design Tokens.
+- **Structure**:
+  - `index.html`: Main single-page application structure with SEO meta tags, semantic markup, and accessible ARIA attributes.
+  - `css/styles.css`: Complete design system tokens, responsive grid, glassmorphism navbar, card states, micro-interactions, modal overlays, and media queries.
+  - `js/data.js`: Rich vehicle catalog (12+ luxury/performance cars with multi-angle photos, real specifications, categories, and pricing).
+  - `js/app.js`: Core application logic (filter/search engine, dynamic rendering, configurator state, financing calculator, comparison tool, wishlist, carousel slider, number counter observer, test drive modal flow, toast notifications).
+  - `assets/`: High-resolution automotive imagery and SVG icons.
+
+---
+
+## Detailed Component Plan
+
+### 1. Sticky Navigation Bar
+- **Branding**: "VOLT MOTORS" with a sleek cyan accent marker.
+- **Navigation Links**: Home, Cars (Inventory), New Arrivals, Configurator, Financing, Services, About.
+- **Quick Action Bar**:
+  - Search trigger icon
+  - Wishlist icon with live badge counter
+  - Compare icon with live badge counter
+  - **"Book a Test Drive"** button (Cyan outline / accent style)
+- **Behavior**: Transparent over the hero section; smoothly transforms to a dark charcoal blurred glass header (`backdrop-filter: blur(16px); background: rgba(13, 13, 13, 0.85)`) on scroll. Mobile responsive hamburger drawer.
+
+### 2. Cinematic Hero Section
+- **Visual**: Large cinematic dark-studio luxury vehicle background with vignette lighting.
+- **Headline**: "DRIVE WHAT MOVES YOU."
+- **Subheading**: "Discover exceptional vehicles built for performance, comfort and unforgettable journeys."
+- **CTAs**: `EXPLORE CARS` (smooth scrolls to inventory) & `BOOK A TEST DRIVE` (opens interactive booking modal).
+- **Subtle Load Animations**:
+  - Smooth 600ms image fade-in.
+  - Subtle upward title slide.
+  - Expanding cyan accent line.
+  - Elegant `SCROLL TO EXPLORE ↓` floating indicator.
+
+### 3. Performance Showcase ("ENGINEERED TO PERFORM")
+- Clean dark highlight section with 3 large metrics:
+  - **503 HP** (Power)
+  - **650 Nm** (Torque)
+  - **3.4 SEC** (0–100 km/h)
+- Viewport intersection-triggered smooth counter animation (counts up from 0 when scrolled into view).
+
+### 4. Interactive Search & Multi-Filter Inventory ("FIND YOUR NEXT CAR")
+- **Live Search**: Instant keyword search (make, model, keyword).
+- **Multi-Filter Controls**:
+  - **Brand**: All, BMW, Porsche, Mercedes-AMG, Audi, Tesla, Lucid, Aston Martin, Ferrari.
+  - **Body Type**: All, SUV, Sedan, Sports, Electric, Luxury.
+  - **Fuel**: All, Petrol, Electric, Hybrid.
+  - **Price Range**: Interactive slider ($40,000 – $350,000+).
+  - **Year & Transmission** filters.
+  - **Sort By**: Featured, Price (Low-to-High / High-to-Low), Power (HP), 0-100 km/h acceleration.
+- **Dynamic Transition**: Smooth fade/slide when cards filter in and out. Active filter pills with instant clear.
+
+### 5. Featured Vehicles Grid & Vehicle Cards
+- **Grid Display**: Clean responsive 3-column / 2-column / 1-column layout.
+- **Card Elements**: High-res vehicle photography, brand, model name, year, price, key specs pills (HP, Fuel, Transmission, 0-100 time).
+- **Card Hover**: 3-5% image zoom, subtle card lift (-4px), thin cyan border glow transition, CTA arrow slide.
+- **Quick Actions**:
+  - Heart icon (Wishlist toggle with toast feedback).
+  - Compare checkbox (Adds to floating comparison dock).
+  - `VIEW DETAILS →` button (Opens comprehensive Vehicle Detail view).
+
+### 6. Dedicated Vehicle Detail View & Image Gallery Modal
+- **Layout**: Large vehicle image on left with selectable multi-angle thumbnail gallery; full specifications and purchase options on right.
+- **Interactive Gallery**: Clicking thumbnails smoothly cross-fades main picture; active thumbnail gets cyan border.
+- **Specs & Actions**:
+  - Make, model, price, full performance breakdown.
+  - `BOOK A TEST DRIVE` (auto-selects this car in booking form).
+  - `ADD TO COMPARE` & `♡ SAVE TO WISHLIST`.
+  - Detailed spec breakdown tabs (Performance, Powertrain, Interior & Tech, Safety).
+
+### 7. Explore by Category
+- Visual category cards: **SUV**, **SEDAN**, **SPORTS**, **ELECTRIC**, **LUXURY**.
+- High-res vehicle imagery, dark gradient overlay, category title, active count.
+- Hover: Subtle image zoom, dark overlay softens, title lifts, cyan arrow appears.
+- Click action: Instantly filters the main inventory to the selected category and smoothly scrolls to the inventory.
+
+### 8. New Arrivals Carousel
+- Horizontal smooth carousel with drag, touch swipe, and arrow navigation buttons.
+- Features newest additions to the showroom with a synchronized bottom progress indicator bar.
+
+### 9. Interactive "Build Your Car" Studio Configurator
+- Interactive vehicle customizer for a flagship model (e.g. BMW M4 Competition / Porsche 911 GT3).
+- **Customization Options**:
+  - **Exterior Color**: Obsidian Black, Frozen Cyan, Alpine White, Daytona Grey, Isle of Man Green.
+  - **Wheels**: 20" M Forged Graphite, 21" Aero Carbon, 20" Multi-Spoke Gloss Black.
+  - **Interior**: Black Merino Leather, Silverstone & Cyan Stitching, Kyalami Orange Carbon.
+  - **Packages**: Standard, M Carbon Track Pack (+$8,500), Executive Luxury Package (+$5,200).
+- **Real-time Updates**: Exterior car image/finish updates, live total price recalculation with animated number counter, and "Save Configuration" / "Book Test Drive With This Spec" buttons.
+
+### 10. Financing Calculator ("MAKE IT YOURS")
+- Interactive inputs:
+  - Vehicle Price slider ($40,000 - $300,000)
+  - Down Payment slider ($0 - $100,000)
+  - Loan Term (24, 36, 48, 60, 72 months)
+  - Interest Rate slider (2.9% - 9.9%)
+- **Dynamic Calculation**: Real-time animated calculation of **Estimated Monthly Payment**, Total Interest, and Total Loan Amount.
+- CTA: `GET FINANCING OPTIONS` (opens pre-qualification modal).
+
+### 11. Test Drive CTA Banner ("SEE IT. DRIVE IT. FEEL IT.")
+- Wide cinematic section with subtle background parallax/zoom and `BOOK A TEST DRIVE →` CTA.
+
+### 12. Customer Reviews & Testimonials
+- Minimal 5-star review carousel with verified buyer badges, buyer names, and purchased vehicle models.
+
+### 13. "Why VOLT MOTORS" Value Proposition
+- 4 clean feature blocks with minimal line icons and subtle cyan hover animations:
+  1. **QUALITY CHECKED** (Every vehicle carefully inspected)
+  2. **WIDE SELECTION** (Premium vehicles across multiple categories)
+  3. **FLEXIBLE FINANCING** (Tailored financing solutions)
+  4. **AFTER-SALES SUPPORT** (Dedicated support beyond the purchase)
+
+### 14. Floating Compare Dock & Side-by-Side Comparison Modal
+- Floating bottom dock appears when 2-4 cars are selected for comparison.
+- Full side-by-side comparison modal comparing technical specs, pricing, performance, and features.
+
+### 15. Wishlist Drawer
+- Side slide-out drawer showing saved cars with instant removal or direct test drive booking.
+
+### 16. Test Drive Booking Modal
+- Clean, multi-step booking modal:
+  - Vehicle selection (pre-filled if clicked from a specific car).
+  - Date & Time slot picker.
+  - Showroom Location or At-Home Delivery Test Drive option.
+  - Contact information with instant confirmation screen and booking reference ID.
+
+### 17. Premium Footer
+- Brand logo, quick links, opening hours, contact details, social links, newsletter signup with instant feedback, and a subtle cyan accent line.
+
+---
+
+## Verification Plan
+
+### Manual Verification in Browser:
+1. **Visual & Styling Check**:
+   - Verify black (`#050505`), charcoal (`#0D0D0D`), and cyan (`#00E5FF`) palette adherence.
+   - Verify typography hierarchy and clean layout spacing.
+2. **Interactive Testing**:
+   - Test sticky navbar blur on scroll and mobile hamburger toggle.
+   - Test Hero scroll indicator and CTAs.
+   - Test Performance counters intersection animation.
+   - Test live car search and multi-filtering (brand, body type, fuel, price range slider).
+   - Test Car Detail modal gallery (clicking thumbnails switches image smoothly).
+   - Test "Build Your Car" configurator (color, wheel, interior, package changes update price and car view).
+   - Test Financing Calculator (sliders dynamically update estimated monthly payment).
+   - Test Wishlist & Compare dock / modal.
+   - Test Test Drive booking form submission flow.
+3. **Responsive Verification**:
+   - Verify desktop (1440px+), tablet (768px), and mobile (390px) layouts.
